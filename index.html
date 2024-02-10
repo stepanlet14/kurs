@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <title>Title: ПитонСкрипт</title>
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+<body>
+    <py-script> 
+
+# Параметры графика
+width, height = 40, 20  # Ширина и высота графика
+scale = 0.1  # Масштаб графика
+
+# Создаем двумерный массив для хранения символов
+plot = [[' ' for _ in range(width)] for _ in range(height)]
+
+# Функция для отрисовки параболы
+def draw_parabola():
+    for x in range(width):
+        # Преобразуем координаты в "мировые" координаты
+        world_x = (x - width / 2) * scale
+        world_y = world_x ** 2 / scale
+        # Преобразуем "мировые" координаты обратно в координаты экрана
+        y = int(height / 2 - world_y)
+        if 0 <= y < height:
+            plot[y][x] = '*'
+
+# Функция для отображения графика
+def display_plot():
+    for row in plot:
+        print(''.join(row))
+
+# Отрисовываем параболу и отображаем график
+draw_parabola()
+display_plot()
+   
+    </py-script>
+</body>
+</html>
+
